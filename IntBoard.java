@@ -5,6 +5,7 @@ import java.util.LinkedList;
 
 public class IntBoard {
 	HashSet target = new HashSet();
+	
 	public IntBoard() {
 		// TODO Auto-generated constructor stub
 	}
@@ -13,8 +14,7 @@ public class IntBoard {
 		
 	}
 	
-	//Talk to Brandon
-	public void startTargets(/*We need to decided what we want to code*/){
+	public void startTargets(int location, int steps){
 		
 	}
 	
@@ -24,15 +24,15 @@ public class IntBoard {
 		return target;	
 	}
 	
-	public LinkedList<Integer> getAdjList(){
+	public LinkedList<Integer> getAdjList(int location){
 		
 		//returns the adjacency list for one cell
 		return null;
 	}
 	
-	public Integer calcIndex(int row, int column){
+	public int calcIndex(int row, int column){
 		
 		//returns index
-		return null;
+		return 1000;
 	}
 }
