@@ -1,5 +1,7 @@
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.LinkedList;
+import java.util.Map;
 
 //Naomi Plasterer and Brandon Bosso
 
@@ -10,7 +12,8 @@ public class IntBoard {
 	
 	public IntBoard() {
 		targets = new HashSet<Integer>();
-		Arrays.fill(visited, 0, 14 false);
+		visited = new boolean[15];
+		Arrays.fill(visited, false);
 	}
 	
 	public void calcAdjacencies(){
@@ -40,12 +43,23 @@ public class IntBoard {
 	}
 	
 	public void startTargets(int location, int steps){
-		
+		//empty targets and set visited to false just in case
+		targets = new HashSet<Integer>();
+		Arrays.fill(visited, false);
+		//set start location to true
+		visited[location] = true;
+		LinkedList<Integer> adjs = adjMtx.get(location);
+		for(Integer i : adjs) {
+			visited[i] = true;
+			if(steps == 1) 
+				targets.add(i);
+			else
+				startTargets(i, steps - 1);
+			visited[i] = false;
+		}
 	}
 	
 	public HashSet getTargets(){
-		
-		//return a HashSet with no items
 		return targets;	
 	}
 	
@@ -54,6 +68,6 @@ public class IntBoard {
 	}
 	
 	public int calcIndex(int row, int column){
-		return (2*row) + column;
+		return (4*row) + column;
 	}
 }
