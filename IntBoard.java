@@ -33,6 +33,7 @@ public class IntBoard {
 			adjs.add(calcIndex(row,column+1));
 			adjs.add(calcIndex(row,column-1));
 		}
+		adjMtx.put(calcIndex(row,column),adjs);
 	}
 	
 	public void startTargets(int location, int steps){
