@@ -167,7 +167,9 @@ public class IntBoardTest {
 	{
 		board.startTargets(15, 5);
 		Set targets= board.getTargets();
-		Assert.assertEquals(7, targets.size());
+		System.out.println("15_5" + targets);
+		Assert.assertEquals(8, targets.size());
+		Assert.assertTrue(targets.contains(11));
 		Assert.assertTrue(targets.contains(12));
 		Assert.assertTrue(targets.contains(9));
 		Assert.assertTrue(targets.contains(1));

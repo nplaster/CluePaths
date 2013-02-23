@@ -14,7 +14,7 @@ public class IntBoard {
 	public IntBoard() {
 		targets = new HashSet<Integer>();
 		adjMtx = new HashMap<Integer, LinkedList<Integer>>();
-		visited = new boolean[15];
+		visited = new boolean[16];
 		Arrays.fill(visited, false);
 	}
 	
@@ -51,14 +51,22 @@ public class IntBoard {
 		Arrays.fill(visited, false);
 		//set start location to true
 		visited[location] = true;
-		LinkedList<Integer> adjs = adjMtx.get(location);
-		for(Integer i : adjs) {
-			visited[i] = true;
+		calcTargets(location,steps);
+	}
+	
+	public void calcTargets(int location, int steps) {
+		LinkedList<Integer> adjs = new LinkedList<Integer>();
+		for(Integer i : adjMtx.get(location)) {
+			if(!visited[i])
+				adjs.add(i);
+		}
+		for(Integer adjCell : adjs) {
+			visited[adjCell] = true;
 			if(steps == 1) 
-				targets.add(i);
+				targets.add(adjCell);
 			else
-				startTargets(i, steps - 1);
-			visited[i] = false;
+				calcTargets(adjCell, steps - 1);
+			visited[adjCell] = false;
 		}
 	}
 	
