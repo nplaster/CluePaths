@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Map;
@@ -12,15 +13,17 @@ public class IntBoard {
 	
 	public IntBoard() {
 		targets = new HashSet<Integer>();
+		adjMtx = new HashMap<Integer, LinkedList<Integer>>();
 		visited = new boolean[15];
 		Arrays.fill(visited, false);
 	}
 	
 	public void calcAdjacencies(){
+		LinkedList<Integer> adjs;
 		for(int row = 0; row <= 3; row++) {
 			for(int column = 0; column <= 3; column++) {
-				LinkedList<Integer> adjs = new LinkedList<Integer>();
-				if(row == 3)
+				adjs = new LinkedList<Integer>();
+				if(row == 3) 
 					adjs.add(calcIndex(row-1,column));
 				else if(row == 0)
 					adjs.add(calcIndex(row+1,column));
@@ -31,7 +34,7 @@ public class IntBoard {
 
 				if(column == 3)
 					adjs.add(calcIndex(row,column-1));
-				else if(column-1 == 0)
+				else if(column == 0)
 					adjs.add(calcIndex(row,column+1));
 				else {
 					adjs.add(calcIndex(row,column+1));

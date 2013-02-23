@@ -16,6 +16,7 @@ public class IntBoardTest {
 	@Before 
 	public void setUp(){
 		board = new IntBoard();	
+		board.calcAdjacencies();
 	}
 	
 	@Test
@@ -28,7 +29,7 @@ public class IntBoardTest {
 	
 	@Test
 	public void testAdjacency0() {
-		LinkedList testList = board.getAdjList(0);
+		LinkedList<Integer> testList = board.getAdjList(0);
 		Assert.assertTrue(testList.contains(4));
 		Assert.assertTrue(testList.contains(1));
 		Assert.assertEquals(2, testList.size());
@@ -36,7 +37,7 @@ public class IntBoardTest {
 
 	@Test
 	public void testAdjacency15() {
-		LinkedList testList = board.getAdjList(15);
+		LinkedList<Integer> testList = board.getAdjList(15);
 		Assert.assertTrue(testList.contains(11));
 		Assert.assertTrue(testList.contains(14));
 		Assert.assertEquals(2, testList.size());
@@ -44,7 +45,7 @@ public class IntBoardTest {
 	
 	@Test
 	public void testAdjacency7() {
-		LinkedList testList = board.getAdjList(7);
+		LinkedList<Integer> testList = board.getAdjList(7);
 		Assert.assertTrue(testList.contains(3));
 		Assert.assertTrue(testList.contains(6));
 		Assert.assertTrue(testList.contains(11));
@@ -53,7 +54,7 @@ public class IntBoardTest {
 	
 	@Test
 	public void testAdjacency8() {
-		LinkedList testList = board.getAdjList(8);
+		LinkedList<Integer> testList = board.getAdjList(8);
 		Assert.assertTrue(testList.contains(4));
 		Assert.assertTrue(testList.contains(9));
 		Assert.assertTrue(testList.contains(12));
@@ -62,7 +63,7 @@ public class IntBoardTest {
 	
 	@Test
 	public void testAdjacency5() {
-		LinkedList testList = board.getAdjList(5);
+		LinkedList<Integer> testList = board.getAdjList(5);
 		Assert.assertTrue(testList.contains(4));
 		Assert.assertTrue(testList.contains(1));
 		Assert.assertTrue(testList.contains(6));
@@ -72,7 +73,7 @@ public class IntBoardTest {
 	
 	@Test
 	public void testAdjacency10() {
-		LinkedList testList = board.getAdjList(10);
+		LinkedList<Integer> testList = board.getAdjList(10);
 		Assert.assertTrue(testList.contains(6));
 		Assert.assertTrue(testList.contains(9));
 		Assert.assertTrue(testList.contains(11));
