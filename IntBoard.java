@@ -4,10 +4,13 @@ import java.util.LinkedList;
 //Naomi Plasterer and Brandon Bosso
 
 public class IntBoard {
-	HashSet target = new HashSet();
+	private HashSet<Integer> targets;
+	private Map<Integer, LinkedList<Integer>> adjMtx;
+	private boolean[] visited;
 	
 	public IntBoard() {
-		// TODO Auto-generated constructor stub
+		targets = new HashSet<Integer>();
+		Arrays.fill(visited, 0, 14 false);
 	}
 	
 	public void calcAdjacencies(){
@@ -21,18 +24,14 @@ public class IntBoard {
 	public HashSet getTargets(){
 		
 		//return a HashSet with no items
-		return target;	
+		return targets;	
 	}
 	
 	public LinkedList<Integer> getAdjList(int location){
-		
-		//returns the adjacency list for one cell
-		return null;
+		return adjMtx.get(location);
 	}
 	
 	public int calcIndex(int row, int column){
-		
-		//returns index
-		return 1000;
+		return (2*row) + column;
 	}
 }
