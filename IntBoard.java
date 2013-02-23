@@ -13,8 +13,26 @@ public class IntBoard {
 		Arrays.fill(visited, 0, 14 false);
 	}
 	
-	public void calcAdjacencies(){
+	//We should find a better way to do this
+	public void calcAdjacencies(int row, int column){
+		LinkedList<Integer> adjs = new LinkedList<Integer>();
+		if(row + 1 > 3)
+			adjs.add(calcIndex(row-1,column));
+		else if(row-1 < 0)
+			adjs.add(calcIndex(row+1,column));
+		else {
+			adjs.add(calcIndex(row+1,column));
+			adjs.add(calcIndex(row-1,column));
+		}
 		
+		if(column + 1 > 3)
+			adjs.add(calcIndex(row,column-1));
+		else if(column-1 < 0)
+			adjs.add(calcIndex(row,column+1));
+		else {
+			adjs.add(calcIndex(row,column+1));
+			adjs.add(calcIndex(row,column-1));
+		}
 	}
 	
 	public void startTargets(int location, int steps){
